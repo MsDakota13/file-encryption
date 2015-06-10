@@ -4,11 +4,14 @@ import java.io.File;
 import com.hro.encrypter.*;
 
 public class FileEncrypterTest {
+    
+        static String target="C:\\Users\\cyvan\\Documents\\GitHub\\en\\";
+    
 	public static void main(String[] args) {
 		String key = "Mary has one cat";
-		File inputFile = new File("document.txt");
-		File encryptedFile = new File("document.encrypted");
-		File decryptedFile = new File("document.decrypted");
+		File inputFile = new File(target+"New Text Document.txt");
+		File encryptedFile = new File(target+"document.encrypted");
+		File decryptedFile = new File(target+"document.decrypted");
 		
 		try {
 			CryptoUtils.encrypt(key, inputFile, encryptedFile);
