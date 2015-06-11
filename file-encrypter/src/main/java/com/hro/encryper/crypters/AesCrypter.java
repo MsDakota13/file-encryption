@@ -17,7 +17,10 @@ public class AesCrypter extends BaseCrypter {
 
 	@Override
 	public String encryptFile(String key, File inputFile, File encryptedFile) {
-		// TODO Auto-generated method stub
+		if(validateKey(key) == 1){
+			return "Encryption key is invalid";
+		}
+		
 		try {
             super.encrypt(key, inputFile, encryptedFile);
         } catch (CryptoException ex) { 
@@ -29,7 +32,10 @@ public class AesCrypter extends BaseCrypter {
 
 	@Override
 	public String decryptFile(String key, File inputFile, File decryptedFile) {
-		// TODO Auto-generated method stub
+		if(validateKey(key) == 1){
+			return "Encryption key is invalid";
+		}
+		
 		try {
             super.decrypt(key, inputFile, decryptedFile);
         } catch (CryptoException ex) {
@@ -41,7 +47,9 @@ public class AesCrypter extends BaseCrypter {
 
 	@Override
 	public int validateKey(String key) {
-		// TODO Auto-generated method stub
+		if(!(key.length() == 16)){
+			return 1;
+		}
 		return 0;
 	}
 	

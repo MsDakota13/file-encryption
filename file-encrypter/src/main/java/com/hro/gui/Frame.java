@@ -134,7 +134,7 @@ public class Frame extends JPanel implements ActionListener{
                     String filename=destination_file.substring(destination_file.lastIndexOf("\\") + 1);
                     String[] dir=destination_file.split(filename);
                     if(e.getSource() == encrypt){
-                        new CryptoHandler().encrypt("AES", key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted"));
+                        log.append(new CryptoHandler().encrypt("AES", key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted")) + newline);
                     /*} else if (e.getSource() == decrypt){
                         try {
                             CryptoUtils.decrypt(key, new File(dir[0]+filename), new File(dir[0]+filename+"decrypted"));
