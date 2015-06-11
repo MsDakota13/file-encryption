@@ -15,8 +15,8 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.SecretKeySpec;
  
 public class CryptoUtils {
-    private static final String ALGORITHM = "AES";
-    private static final String TRANSFORMATION = "AES";
+    protected static String ALGORITHM;
+    protected static String TRANSFORMATION;
  
     public static void encrypt(String key, File inputFile, File outputFile)
             throws CryptoException {

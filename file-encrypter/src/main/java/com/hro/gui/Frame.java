@@ -5,7 +5,9 @@
  */
 package com.hro.gui;
 
+import com.hro.encryper.crypters.AesCrypter;
 import com.hro.encrypter.*;
+
 import java.awt.BorderLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -13,6 +15,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
@@ -131,11 +134,7 @@ public class Frame extends JPanel implements ActionListener{
                     String filename=destination_file.substring(destination_file.lastIndexOf("\\") + 1);
                     String[] dir=destination_file.split(filename);
                     if(e.getSource() == encrypt){
-                        try {
-                            CryptoUtils.encrypt(key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted"));
-                        } catch (CryptoException ex) {
-                            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-                        }
+                        new CryptoHandler().encrypt("AES", key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted"));
                     /*} else if (e.getSource() == decrypt){
                         try {
                             CryptoUtils.decrypt(key, new File(dir[0]+filename), new File(dir[0]+filename+"decrypted"));
