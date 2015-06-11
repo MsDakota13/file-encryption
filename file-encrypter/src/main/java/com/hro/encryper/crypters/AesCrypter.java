@@ -5,10 +5,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.hro.encrypter.CryptoException;
-import com.hro.encrypter.CryptoUtils;
 import com.hro.gui.Frame;
 
-public class AesCrypter extends CryptoUtils implements BaseCrypter {
+public class AesCrypter extends BaseCrypter {
 	
 	@SuppressWarnings("static-access")
 	public AesCrypter(){

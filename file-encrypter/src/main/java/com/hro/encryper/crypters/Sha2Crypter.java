@@ -2,7 +2,7 @@ package com.hro.encryper.crypters;
 
 import java.io.File;
 
-public class Sha2Crypter implements BaseCrypter {
+public class Sha2Crypter extends BaseCrypter {
 
 	@Override
 	public String encryptFile(String key, File inputFile, File encryptedFile) {
@@ -17,7 +17,7 @@ public class Sha2Crypter implements BaseCrypter {
 	}
 
 	@Override
-	public int validateKey(String key) {
+	int validateKey(String key) {
 		// TODO Auto-generated method stub
 		return 0;
 	}

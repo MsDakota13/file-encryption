@@ -2,7 +2,7 @@ package com.hro.encryper.crypters;
 
 import java.io.File;
 
-public class Sha1Crypter implements BaseCrypter {
+public class Sha1Crypter extends BaseCrypter {
 
 	@Override
 	public String encryptFile(String key, File inputFile, File encryptedFile) {
