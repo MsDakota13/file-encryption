@@ -2,6 +2,8 @@ package com.hro.encryper.crypters;
 
 import java.io.File;
 
+import com.hro.encrypter.CryptoException;
+
 public class Sha2Crypter extends BaseCrypter {
 
 	@Override
@@ -20,6 +22,13 @@ public class Sha2Crypter extends BaseCrypter {
 	int validateKey(String key) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	protected void doCrypto(int cipherMode, String key, File inputFile,
+			File outputFile) throws CryptoException {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -1,8 +1,15 @@
 package com.hro.encryper.crypters;
 
 import java.io.File;
+import java.security.InvalidKeyException;
+import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.crypto.Cipher;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.SecretKeySpec;
 
 import com.hro.encrypter.CryptoException;
 import com.hro.gui.Frame;
@@ -20,7 +27,6 @@ public class AesCrypter extends BaseCrypter {
 		if(validateKey(key) == 1){
 			return "Encryption key is invalid";
 		}
-		
 		try {
             super.encrypt(key, inputFile, encryptedFile);
         } catch (CryptoException ex) { 
@@ -35,7 +41,6 @@ public class AesCrypter extends BaseCrypter {
 		if(validateKey(key) == 1){
 			return "Encryption key is invalid";
 		}
-		
 		try {
             super.decrypt(key, inputFile, decryptedFile);
         } catch (CryptoException ex) {
@@ -52,5 +57,16 @@ public class AesCrypter extends BaseCrypter {
 		}
 		return 0;
 	}
-	
+
+	@Override
+	protected void doCrypto(int cipherMode, String key, File inputFile, File outputFile) throws CryptoException {
+		try {
+			Key secretKey = new SecretKeySpec(key.getBytes(), ALGORITHM);
+			Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+			cipher.init(cipherMode, secretKey);
+			super.saveCrypto(cipher, inputFile, outputFile);
+		}catch(NoSuchPaddingException | NoSuchAlgorithmException | InvalidKeyException ex){
+			throw new CryptoException("Error encrypting/decrypting file", ex);
+		}
+	}
 }
