@@ -135,12 +135,16 @@ public class Frame extends JPanel implements ActionListener{
                     String[] dir=destination_file.split(filename);
                     if(e.getSource() == encrypt){
                         log.append(new CryptoHandler().encrypt("AES", key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted")) + newline);
-                    /*} else if (e.getSource() == decrypt){
-                        try {
-                            CryptoUtils.decrypt(key, new File(dir[0]+filename), new File(dir[0]+filename+"decrypted"));
-                        } catch (CryptoException ex) {
-                            Logger.getLogger(Frame.class.getName()).log(Level.SEVERE, null, ex);
-                        }*/
+                        encrypt.setEnabled(true);
+                        decrypt.setEnabled(true);
+                        source.setEnabled(true);
+                        destination.setEnabled(true);
+                    } else if (e.getSource() == decrypt){
+                        log.append(new CryptoHandler().decrypt("AES", key, new File(dir[0]+filename), new File(dir[0]+filename+"encrypted")) + newline);
+                        encrypt.setEnabled(true);
+                        decrypt.setEnabled(true);
+                        source.setEnabled(true);
+                        destination.setEnabled(true);
                     }
                 }
             }
