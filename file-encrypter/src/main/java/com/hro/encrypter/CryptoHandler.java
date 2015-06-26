@@ -21,7 +21,7 @@ public class CryptoHandler {
 			return new AesCrypter().decryptFile(key, inputFile, decryptedFile);
 		default:
 			return "Invaled Crypto Method";
-	}
+		}
 	}
 
 }
